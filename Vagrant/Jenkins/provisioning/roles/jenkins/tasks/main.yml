@@ -1,0 +1,22 @@
+---
+
+- name: Install openjdk-8-jre
+  apt: name=openjdk-8-jre state=present update_cache=yes
+
+- name: Add Debian package repository of Jenkins
+  apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    state: present
+
+- apt_repository:
+    repo: deb https://pkg.jenkins.io/debian binary/
+    state: present
+    filename: jenkins-weekly
+
+- name: Install Jenkins
+  apt: name=jenkins state=present update_cache=yes
+
+- name: Start Jenkins
+  service: name=jenkins enabled=yes
+
+  
