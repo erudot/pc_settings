@@ -1,0 +1,12 @@
+version: '3'
+services:
+  ubuntu-desktop:
+    image: dorowu/ubuntu-desktop-lxde-vnc:latest
+    ports:
+      - '6080:80'
+      - '5900:5900'
+    environment:
+      - USER=erudot
+      - PASSWORD=password 
+      - RELATIVE_URL_ROOT=some-prefix
+      - RESOLUTION=1920x1080
